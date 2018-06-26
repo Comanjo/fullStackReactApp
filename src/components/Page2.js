@@ -33,8 +33,8 @@ class Page2 extends Component {
 
         <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Name</label>
-          <input type="text" className="form-control" id="InputEmail1" aria-describedby="emailHelp"
+          <label htmlFor="InputName">Name</label>
+          <input type="text" className="form-control" id="InputName" aria-describedby="NameHelp"
                  placeholder="Name" onChange={e => this.setState({ name: e.target.value })}/>
         </div>
         <div className="form-group">
