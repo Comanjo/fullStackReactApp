@@ -12,11 +12,14 @@ class Page2 extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const data = { ...this.state }
+    const data = JSON.stringify({ ...this.state })
 
-    fetch('http://localHost:4000', {
+    fetch('http://localhost:4000', {
       method: 'post',
-      body: data
+      body: data,
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
   }
 
