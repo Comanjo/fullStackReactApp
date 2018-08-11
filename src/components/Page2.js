@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 
+
 class Page2 extends Component {
 
   state = {
@@ -10,9 +11,10 @@ class Page2 extends Component {
     phone: ''
   }
 
-  handleSubmit = (e) => {
+
+handleSubmit = (e) => {
     e.preventDefault();
-    const data = JSON.stringify({ ...this.state })
+    const data = JSON.stringify({...this.state})
 
     fetch('http://localhost:4000', {
       method: 'post',
@@ -24,6 +26,7 @@ class Page2 extends Component {
   }
 
 
+
   render() {
     console.log(this);
     return (
@@ -32,13 +35,13 @@ class Page2 extends Component {
         <button type="button" className="btn btn-primary">Home<Link to="/">Home</Link></button>
         <br/>
         <br/>
-        <button type="button" className="btn btn-primary">Page3<Link to="/page3">Page3</Link></button>
+        <button type="button" className="btn btn-primary">People<Link to="/people">People</Link></button>
 
         <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="InputName">Name</label>
           <input type="text" className="form-control" id="InputName" aria-describedby="NameHelp"
-                 placeholder="Name" onChange={e => this.setState({ name: e.target.value })}/>
+                 placeholder="Name" onChange={e => this.setState({name: e.target.value})}/>
         </div>
         <div className="form-group">
           <label htmlFor="InputAddress">Address</label>
@@ -55,6 +58,8 @@ class Page2 extends Component {
       </form>
 
 
+
+
   </div>
   )
     ;
@@ -62,3 +67,4 @@ class Page2 extends Component {
 }
 
 export default Page2;
+
