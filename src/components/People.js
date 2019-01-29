@@ -14,7 +14,7 @@ class People extends Component {
 
   handleUpdate = async (_id) => {
     const update = JSON.stringify({ ...this.state })
-    await fetch('http://localhost:3030/' + _id, {
+    await fetch('http://localhost:4000/' + _id, {
       method: 'PUT',
       body: update,
       headers: {
@@ -26,8 +26,7 @@ class People extends Component {
 
 
     handleSubmit = async (_id) => {
-
-    await fetch('http://localhost:3030/' + _id, {
+      await fetch('http://localhost:4000/' + _id, {
       method: 'delete'
     });
     await this.getPeople()
@@ -36,7 +35,7 @@ class People extends Component {
 
   getPeople = async () => {
 
-    return fetch('http://localhost:3030')
+    return fetch('http://localhost:4000')
       .then(results => {
         return results.json();
       })
