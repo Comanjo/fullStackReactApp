@@ -11,7 +11,7 @@ class Form extends Component {
   }
 
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const data = JSON.stringify({ ...this.state })
     fetch('http://localhost:4000', {

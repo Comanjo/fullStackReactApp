@@ -11,9 +11,9 @@ class People extends Component {
       address: '',
       password: ''
     }
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
   handleUpdate = async (_id) => {
-    const update = JSON.stringify({ ...this.state })
+    const update = JSON.stringify({ ...this.state })                                                                                                              
     await fetch('http://localhost:4000/' + _id, {
       method: 'PUT',
       body: update,
@@ -35,13 +35,21 @@ class People extends Component {
 
   getPeople = async () => {
 
-    return fetch('http://localhost:4000')
+    return fetch('https://raw.githubusercontent.com/CivilServiceUSA/us-senate/master/us-senate/data/us-senate.json')
       .then(results => {
         return results.json();
       })
       .then(data => {
         this.setState({people: data})
       })
+  }
+  filterSenators= (e) => {
+    let senators = this.state.people
+    senators = senators.filter(senator => {
+      return senator.toLowerCase().search(
+        e.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({people: senators});
   }
 
 
@@ -50,6 +58,9 @@ class People extends Component {
 
     await this.getPeople()
   }
+
+  
+
 
   render() {
     console.log(this);
@@ -60,11 +71,16 @@ class People extends Component {
         <div>
           <Link to="/"><button type="button" className="btn btn-primary">Home</button></Link>
         <br/>
+        <form>
+        <fieldset className="form-group">
+        <input type="text" className="form-control form-control-sm" placeholder="Search" onChange={ this.filterSenators}/>
+        </fieldset>
+        </form>
         <br/>
         <div>
             {this.state.people.map
-            (people =>
-              <div className="border" key={people._id}>
+            ((people,index) =>
+              <div className="border" key={index}>
                 <h3> Name: {people.name}</h3>
                 <p> Phone: {people.phone}</p>
                 <p> Address: {people.address}</p>
