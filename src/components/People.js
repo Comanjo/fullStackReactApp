@@ -46,7 +46,7 @@ class People extends Component {
   filterSenators= (e) => {
     let senators = this.state.people
     senators = senators.filter(senator => {
-      return senator.toLowerCase().search(
+      return senator.name.toLowerCase().search(
         e.target.value.toLowerCase()) !== -1;
     });
     this.setState({people: senators});
