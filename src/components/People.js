@@ -35,7 +35,7 @@ class People extends Component {
 
   getPeople = async () => {
 
-    return fetch('https://raw.githubusercontent.com/CivilServiceUSA/us-senate/master/us-senate/data/us-senate.json')
+    return fetch('http://localhost:4000')
       .then(results => {
         return results.json();
       })
