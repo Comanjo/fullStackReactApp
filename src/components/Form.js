@@ -11,17 +11,6 @@ class Form extends Component {
   }
 
 
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = JSON.stringify({ ...this.state })
-    fetch('http://localhost:4000', {
-      method: 'POST',
-      body: data,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-  }
 
 
   render() {
