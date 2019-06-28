@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 class People extends Component {
   state = {
-    people: [],
+    senators: [],
+    
     
   };
 // this is my update
@@ -28,22 +29,23 @@ class People extends Component {
   };
 // this is my fetch that does a "get"
   getPeople = async () => {
-    return fetch("http://localhost:4000")
+    return fetch("https://raw.githubusercontent.com/CivilServiceUSA/us-senate/master/us-senate/data/us-senate.json"
+    )
       .then(results => {
         return results.json();
       })
       .then(results => {
-        this.setState({ people: results });
+        this.setState({ senators: results });
       });
   };
   filterPeople = e => {
-    let people = this.state.people;
-    people = people.filter(person => {
+    let senators = this.state.senators;
+    senators = senators.filter((senator) => {
       return (
-        person.name.toLowerCase().search(e.target.value.toLowerCase()) !== -1
+        senator.name.toLowerCase().search(e.target.value.toLowerCase()) !== -1
       );
     });
-    this.setState({ people: people });
+    this.setState({ senators: senators });
   };
 
   async componentDidMount() {
@@ -75,8 +77,8 @@ class People extends Component {
           </form>
           <br />
           <div>
-            {this.state.people.map((people, index) => (
-              <div className="border" key={index}>
+            {this.state.senators.map((people, index) => (
+              <div className="border" key={index} >
                 <h3> Name: {people.name}</h3>
                 <p> Phone: {people.phone}</p>
                 <p> Address: {people.address}</p>
